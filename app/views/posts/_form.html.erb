@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <%= hidden_field_tag('from_index', request.params[:from_index]) if request.params[:from_index].present? %>
+
   <div class="my-5">
     <%= form.label :title %>
     <%= form.text_field :title, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
