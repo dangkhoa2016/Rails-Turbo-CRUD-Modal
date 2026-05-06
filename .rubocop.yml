@@ -1,0 +1,25 @@
+plugins:
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'vendor/**/*'
+    - 'config/environments/*'
+
+Rails:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/AbcSize:
+  Max: 25
