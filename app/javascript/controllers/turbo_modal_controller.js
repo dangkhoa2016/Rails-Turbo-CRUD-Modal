@@ -3,15 +3,24 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="turbo-modal"
 export default class extends Controller {
   connect() {
+    this.boundKeydown = this.handleKeydown.bind(this);
+    window.addEventListener("keydown", this.boundKeydown);
+
     document.addEventListener('turbo:submit-end', (event) => {
-
-      // console.log('addEventListener turbo:submit-end', this.element);
-
       console.log('event.detail', event.detail);
       if (event.detail.success)
         this.hideModal();
-
     }, { once: true });
+  }
+
+  disconnect() {
+    window.removeEventListener("keydown", this.boundKeydown);
+  }
+
+  handleKeydown(event) {
+    if (event.key === "Escape") {
+      this.hideModal();
+    }
   }
 
   hideModal(event) {
